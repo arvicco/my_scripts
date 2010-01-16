@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{my_scripts}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
   s.date = %q{2010-01-16}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{Collection of simple scripts (mostly dev-related)}
   s.email = %q{arvitallian@gmail.com}
   s.executables = ["gitcp", "mybones"]
   s.extra_rdoc_files = [
@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{A collection of ascripts}
   s.test_files = [
     "spec/my_scripts_spec.rb",
      "spec/spec_helper.rb"
