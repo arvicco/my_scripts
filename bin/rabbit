@@ -1,0 +1,20 @@
+#!C:/Dev/ruby/bin/ruby.exe
+
+# Show usage message and exit
+def usage
+  puts "Usage:
+    #{__FILE__} start [args] - starts rabbitmq node
+    #{__FILE__} mqctl [args] - controls rabbitmq node"
+  exit 1
+end
+
+usage if ARGV.empty?
+
+case ARGV.shift
+  when /start/
+    system "%ERLANG_HOME%/lib/rabbitmq_server-1.7.0/sbin/rabbitmq-server.bat #{ARGV.join(' ')}"
+  when /ctl/
+    system "%ERLANG_HOME%/lib/rabbitmq_server-1.7.0/sbin/rabbitmqctl.bat #{ARGV.join(' ')}"
+  else
+    usage
+end
