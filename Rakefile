@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "my_scripts"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "A collection of ascripts"
+    gem.description = "Collection of simple scripts (mostly dev-related)"
     gem.email = "arvitallian@gmail.com"
     gem.homepage = "http://github.com/arvicco/my_scripts"
     gem.authors = ["arvicco"]
