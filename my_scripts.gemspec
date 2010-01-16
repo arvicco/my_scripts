@@ -24,10 +24,13 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/gitcp",
+     "bin/mybones",
      "features/my_scripts.feature",
      "features/step_definitions/my_scripts_steps.rb",
      "features/support/env.rb",
      "lib/my_scripts.rb",
+     "my_scripts.gemspec",
      "spec/my_scripts_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
