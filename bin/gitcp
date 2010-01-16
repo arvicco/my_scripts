@@ -1,0 +1,17 @@
+#!C:/Dev/ruby/bin/ruby.exe
+# If first Arg is a number, it indicates version bump
+bump = ARGV[0].to_i > 0 ? ARGV.shift.to_i : 0 
+message = ARGV.empty? ? 'Commit' : ARGV.join(' ')
+message += " #{Time.now.to_s[0..-6]}"
+puts "Committing (versionup =#{bump}) with message: #{message}"
+system %Q[git add .]
+system %Q[git commit -a -m "#{message}" --author arvicco]
+case bump
+  when 1..9
+	system %Q[rake version:bump:patch]
+  when 10..99
+	system %Q[rake version:bump:minor]
+  when 10..99
+	system %Q[rake version:bump:major]
+end	
+system %Q[git push]
