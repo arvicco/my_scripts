@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-# Show usage message and exit
-def usage
-  puts "Usage: #{__FILE__} project_name Summary or description goes here"
-  exit 1
-end
+require File.dirname(__FILE__) + '/../lib/my_scripts'
 
-usage if ARGV.empty?
-
-# First Arg should be project name
-project = ARGV.shift
-
-# All the other args lumped into summary, or default summary
-summary = ARGV.empty? ? "New project #{project}" : ARGV.join(' ')
-
-puts "Creating Jeweler project #{project} with summary: #{summary}"
-
-system %Q["jeweler --rspec --cucumber --create-repo --summary "#{summary}" --description "#{summary}" #{project}"]
+MyScripts::CLI.run :jew, ARGV
