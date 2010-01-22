@@ -9,7 +9,7 @@ module MyScripts
       # All the other args lumped into summary, or default summary
       summary = @argv.empty? ? "New project #{project}" : @argv.join(' ')
 
-      puts "Creating Jeweler project #{project} with summary: #{summary}"
+      puts "Creating Jeweler project #{project} with summary/description: #{summary}"
 
       system %Q[jeweler --rspec --cucumber --create-repo --summary "#{summary}" --description "#{summary}" #{project}]
     end
