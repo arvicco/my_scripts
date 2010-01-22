@@ -11,7 +11,7 @@ module MyScripts
 
       puts "Creating Jeweler project #{project} with summary: #{summary}"
 
-      system %Q["jeweler --rspec --cucumber --create-repo --summary "#{summary}" --description "#{summary}" #{project}"]
+      system %Q[jeweler --rspec --cucumber --create-repo --summary "#{summary}" --description "#{summary}" #{project}]
     end
   end
 end
