@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{my_scripts}
-  s.version = "0.0.4"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
@@ -32,8 +32,15 @@ Gem::Specification.new do |s|
      "features/step_definitions/my_scripts_steps.rb",
      "features/support/env.rb",
      "lib/my_scripts.rb",
+     "lib/my_scripts/cli.rb",
+     "lib/my_scripts/extensions.rb",
+     "lib/my_scripts/gitcp.rb",
+     "lib/my_scripts/jew.rb",
+     "lib/my_scripts/mybones.rb",
+     "lib/my_scripts/rabbit.rb",
+     "lib/my_scripts/script.rb",
      "my_scripts.gemspec",
-     "spec/my_scripts_spec.rb",
+     "spec/my_scripts/extensions_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -43,7 +50,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{A collection of ascripts}
   s.test_files = [
-    "spec/my_scripts_spec.rb",
+    "spec/my_scripts/extensions_spec.rb",
      "spec/spec_helper.rb"
   ]
 
