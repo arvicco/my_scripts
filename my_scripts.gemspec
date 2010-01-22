@@ -5,14 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{my_scripts}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
-  s.date = %q{2010-01-16}
+  s.date = %q{2010-01-22}
   s.description = %q{Collection of simple scripts (mostly dev-related)}
   s.email = %q{arvitallian@gmail.com}
-  s.executables = ["gitcp", "mybones", "rabbit"]
+  s.executables = ["gitcp", "jew", "mybones", "rabbit"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "bin/gitcp",
+     "bin/jew",
      "bin/mybones",
      "bin/rabbit",
      "features/my_scripts.feature",
