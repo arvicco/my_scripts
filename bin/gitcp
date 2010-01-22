@@ -2,8 +2,7 @@
 
 # Show usage message and exit
 def usage
-  puts "Usage:
-    #{__FILE__} [bump] Commit message goes here"
+  puts "Usage:  #{__FILE__} [bump] Commit message goes here"
   exit 1
 end
 

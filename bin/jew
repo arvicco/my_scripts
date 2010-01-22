@@ -2,25 +2,18 @@
 
 # Show usage message and exit
 def usage
-  puts "Usage:
-    #{__FILE__} [bump] Commit message goes here"
+  puts "Usage: #{__FILE__} project_name Summary or description goes here"
   exit 1
 end
 
 usage if ARGV.empty?
 
-p ARGV
-case ARGV.size
-  when 1 then
-    project = ARGV[0]
-    system "bones create --github \"FIXME: Description for #{project}\" -s basic #{project}"
-  when 2 then
-    project = ARGV[0]
-    descr = ARGV[1]
-    system "bones create --github \"#{descr}\" -s basic #{project}"
-  else
-    puts "Usage: #{ARGV[0]} project_name \"description\""
-    exit 1
-end
+# First Arg should be project name
+project = ARGV.shift
 
-system "jeweler --rspec --cucumber --create-repo --summary "Learning Win32" --description "Experiments with Ruby on Windows using Win32OLE, Win32API and friends" win_exp"
+# All the other args lumped into summary, or default summary
+summary = ARGV.empty? ? "New project #{project}" : ARGV.join(' ')
+
+puts "Creating Jeweler project #{project} with summary: #{summary}"
+
+system %Q["jeweler --rspec --cucumber --create-repo --summary "#{summary}" --description "#{summary}" #{project}"]
