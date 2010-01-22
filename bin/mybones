@@ -1,15 +1,5 @@
-#/usr/bin/env ruby
+#!/usr/bin/env ruby
 
-p ARGV
-case ARGV.size
-  when 1 then
-    project = ARGV[0]
-    system "bones create --github \"FIXME: Description for #{project}\" -s basic #{project}"
-  when 2 then
-    project = ARGV[0]
-    descr = ARGV[1]
-    system "bones create --github \"#{descr}\" -s basic #{project}"
-  else
-    puts "Usage: #{ARGV[0]} project_name \"description\""
-    exit 1
-end
+require File.dirname(__FILE__) + '/../lib/my_scripts'
+
+MyScripts::CLI.run :mybones, ARGV

@@ -12,9 +12,13 @@ module MyScripts
 
     def usage examples, explanation = nil
       puts "Usage:"
-      puts examples.split("\n").map {|line| "    #{@name} #{line}"}
+      puts (examples.respond_to?(:split) ? examples.split("\n") : examples).map {|line| "    #{@name} #{line}"}
       puts explanation if explanation
       exit 1
+    end
+
+    def to_s
+      "#{@name} #{@argv.join(' ')} -> #{self.class}"
     end
   end
 end
