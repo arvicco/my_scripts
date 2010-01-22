@@ -1,4 +1,4 @@
-#!C:/Dev/ruby/bin/ruby.exe
+#/usr/bin/env ruby
 
 # Show usage message and exit
 def usage

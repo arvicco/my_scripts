@@ -1,10 +1,22 @@
-#!C:/Dev/ruby/bin/ruby.exe
+#!/usr/bin/env ruby
+
+# Show usage message and exit
+def usage
+  puts "Usage:
+    #{__FILE__} [bump] Commit message goes here"
+  exit 1
+end
+
+usage if ARGV.empty?
+
 # If first Arg is a number, it indicates version bump
 bump = ARGV[0].to_i > 0 ? ARGV.shift.to_i : 0 
 message = ARGV.empty? ? 'Commit' : ARGV.join(' ')
 message += " #{Time.now.to_s[0..-6]}"
+
 puts "Committing (versionup =#{bump}) with message: #{message}"
-system %Q[git add .]
+
+system %Q[git add --all]
 system %Q[git commit -a -m "#{message}" --author arvicco]
 case bump
   when 1..9

@@ -1,4 +1,13 @@
-#/usr/bin/env ruby
+#!/usr/bin/env ruby
+
+# Show usage message and exit
+def usage
+  puts "Usage:
+    #{__FILE__} [bump] Commit message goes here"
+  exit 1
+end
+
+usage if ARGV.empty?
 
 p ARGV
 case ARGV.size
@@ -13,3 +22,5 @@ case ARGV.size
     puts "Usage: #{ARGV[0]} project_name \"description\""
     exit 1
 end
+
+system "jeweler --rspec --cucumber --create-repo --summary "Learning Win32" --description "Experiments with Ruby on Windows using Win32OLE, Win32API and friends" win_exp"
