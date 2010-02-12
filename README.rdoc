@@ -7,25 +7,85 @@
 A collection of simple scripts/commands used to save time and avoid memorizing/
 retyping chains of boilerplate console commands and their arguments. Packaged
 as a gem to make it easily available everywhere without the need to set up
-paths, environments and all such nonsense...
+paths, environments and all such nonsense... It is also not OS-specific, so
+(in theory) scripts should work on Mac, *nix and Windows.
 
 == FEATURES/PROBLEMS:
 
-This project is quite new, so it's probably not ready for prime time just yet...
+OK, I confess: I wanted to write scripts but had neither time nor desire to learn
+all the esoterics of bash, cmd/powershell and mac scripting. So, I set out to do
+all my scripting in Ruby. I also wanted my scripts to be easily testable, that's
+why I created a simple scripting framework instead of stuffing each script in a
+separate executable Ruby file as most people do.
+
+These scripts are very much targeted to my own specific needs, but if you find them
+useful or need additional features, I'll be happy to generalize. You can also use this
+gem as a basis for writing your own simple scripts that are easy to test and maintain.
+
+Ah, yes - this gem will work only with Ruby 1.9 and later. I use advanced string encoding
+features in my scripts, so 1.8 is not an option for me, and providing backward compatibility
+looks like too much pain. Ruby 1.9 is the way of the future, so let's move forward!
+
+== INSTALL:
+
+  $ sudo gem install my_scripts
 
 == SYNOPSIS:
+=== Creating your own scripts
+
+Put your source file inside lib/my_scripts. It will be auto-loaded. Use MyScripts
+module as a top level namespace. Subclass Script and redefine run method to do all
+actual work:
+
+  #-------- lib/my_shiny_script.rb----------
+  module MyScript
+    class MyShinyScript < Script
+      def run
+        # here you do all actual work for your script
+        # you have following instance vars at your disposal:
+        # @name - your script name,
+        # @argv - your ARGV,
+        # @cli - CLI runner (holds references to stdin and stdout)
+        ...
+      end
+    end
+  end
+  #-------
+
+Put your executable into bin directory, with something like this:
+
+  #-------- lib/my_shiny_script----------
+  #!/usr/bin/env ruby
+  require File.dirname(__FILE__) + '/../lib/my_scripts'
+  MyScripts::CLI.run :my_shiny_script, ARGV
+  #-------
+
+Run 'rake install' from project directory, and enjoy greatness of your new script!
+
+OK, so you're not advanced enough to follow even those simple instructions. No problemo.
+I have dummy script skeleton in lib/dummy.rb that is ready for your use. Just put your
+script code inside run method (if you use ARGV, change it to @argv). Done! You can immediately
+run your script anywhere in the system using the following command:
+
+  $ dummy Whatever arguments your code expects and processes
+
+=== Using existing scripts
+
+  $ jew project_name Summary or description goes here
+
+This script uses Jeweler to create new project skeleton, local git repo and
+initiate remote repo on github. No need to enclose your description in quotes.
+
+  $ gitcp [BUMP] Commit message goes here
 
 Save the result of all your project-related work with one command. It adds all
 new files to git VCS, commits all changes with a timestamped message, opionally
 bumps up version and pushes to remote VCS repository(-ies). If first arg is a
 number, it is treated as bump directive: 1 - bump:patch, 10 - bump:minor,
-100 - bump:major. Otherwise all arguments are treated as part of commit message:
+100 - bump:major. Otherwise all arguments are treated as part of commit message.
+Use inside project dir, preferably at top level.
 
-  $ gitcp [BUMP] Commit message goes here
-
-== INSTALL:
-
-  $ sudo gem install my_scripts
+...
 
 == LICENSE:
 

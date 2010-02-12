@@ -1,4 +1,5 @@
 module MyScripts
+  # Starts and controls rabbitmq server
   class Rabbit < Script
     def run
       case @argv.shift 

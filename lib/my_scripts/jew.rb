@@ -1,4 +1,7 @@
 module MyScripts
+  # This script uses Jeweler to create new project skeleton, local git repo and
+  # initiate remote repo on github
+  #
   class Jew < Script
     def run
       usage "project_name Summary or description goes here" if @argv.empty?

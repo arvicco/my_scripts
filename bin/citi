@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require File.dirname(__FILE__) + '/../lib/my_scripts'
+
+MyScripts::CLI.run :citi, ARGV
