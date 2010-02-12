@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
   s.date = %q{2010-02-12}
-  s.description = %q{Collection of simple scripts (mostly dev-related)}
+  s.description = %q{Simple framework for writing command-line scripts and collection of my own scripts (mostly dev-related)}
   s.email = %q{arvitallian@gmail.com}
-  s.executables = ["citi", "dummy", "gitcp", "jew", "mybones", "rabbit", "recode.rb"]
+  s.executables = ["citi", "dummy", "gitto", "jew", "mybones", "rabbit", "recode.rb"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/citi",
      "bin/dummy",
-     "bin/gitcp",
      "bin/jew",
      "bin/mybones",
      "bin/rabbit",
@@ -39,7 +38,6 @@ Gem::Specification.new do |s|
      "lib/my_scripts/cli.rb",
      "lib/my_scripts/dummy.rb",
      "lib/my_scripts/extensions.rb",
-     "lib/my_scripts/gitcp.rb",
      "lib/my_scripts/jew.rb",
      "lib/my_scripts/mybones.rb",
      "lib/my_scripts/rabbit.rb",
@@ -54,7 +52,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{A collection of ascripts}
+  s.summary = %q{Simple framework for writing command-line scripts}
   s.test_files = [
     "spec/my_scripts/extensions_spec.rb",
      "spec/my_scripts_spec.rb",

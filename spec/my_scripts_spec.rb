@@ -28,8 +28,7 @@ module MyScriptsTest
 
   describe 'Script Execution' do
 
-    context 'truing to execute undefined scripts' do
-
+    context 'trying to execute undefined script' do
       it 'fails' do
         cli = create_cli
         proc{cli.run( :undefined, [])}.should raise_error "Script MyScripts::Undefined not found"
@@ -52,13 +51,19 @@ module MyScriptsTest
         cli.run( :scriptest, [])
       end
 
-      it 'returns value of run() when running pre-defined script' do
+      it 'executes pre-defined script with args' do
+        cli = create_cli
+        stdout_should_receive('OK')
+        cli.run( :scriptest, [1, 2, 3, :four, 'five'])
+      end
+
+      it 'returns return value of Script#run() when running pre-defined script' do
         cli = create_cli
         cli.run( :scriptest, []).should == 1
       end
     end
 
-    context 'executing snake_case scripts' do
+    context 'executing scripts with snake_case names' do
       MyScripts.module_eval "
       # Stub script that just puts 'OK' to stdout
       class SnakeScript < Script

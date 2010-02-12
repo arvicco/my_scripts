@@ -44,7 +44,7 @@ actual work:
         # here you do all actual work for your script
         # you have following instance vars at your disposal:
         # @name - your script name,
-        # @argv - your ARGV,
+        # @argv - your ARGV Array of command line arguments,
         # @cli - CLI runner (holds references to stdin and stdout)
         ...
       end
@@ -54,7 +54,7 @@ actual work:
 
 Put your executable into bin directory, with something like this:
 
-  #-------- lib/my_shiny_script----------
+  #-------- bin/my_shiny_script----------
   #!/usr/bin/env ruby
   require File.dirname(__FILE__) + '/../lib/my_scripts'
   MyScripts::CLI.run :my_shiny_script, ARGV
@@ -62,7 +62,7 @@ Put your executable into bin directory, with something like this:
 
 Run 'rake install' from project directory, and enjoy greatness of your new script!
 
-OK, so you're not advanced enough to follow even those simple instructions. No problemo.
+OK, so you're not advanced enough to follow even these simple instructions. No problemo.
 I have dummy script skeleton in lib/dummy.rb that is ready for your use. Just put your
 script code inside run method (if you use ARGV, change it to @argv). Done! You can immediately
 run your script anywhere in the system using the following command:
@@ -76,7 +76,7 @@ run your script anywhere in the system using the following command:
 This script uses Jeweler to create new project skeleton, local git repo and
 initiate remote repo on github. No need to enclose your description in quotes.
 
-  $ gitcp [BUMP] Commit message goes here
+  $ gitto [BUMP] Commit message goes here
 
 Save the result of all your project-related work with one command. It adds all
 new files to git VCS, commits all changes with a timestamped message, opionally
