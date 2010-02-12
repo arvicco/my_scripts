@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{my_scripts}
-  s.version = "0.0.8"
+  s.version = "0.0.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
      "lib/my_scripts/script.rb",
      "my_scripts.gemspec",
      "spec/my_scripts/extensions_spec.rb",
+     "spec/my_scripts_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
