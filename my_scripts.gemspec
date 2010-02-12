@@ -5,14 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{my_scripts}
-  s.version = "0.0.7"
+  s.version = "0.0.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
-  s.date = %q{2010-01-22}
+  s.date = %q{2010-02-12}
   s.description = %q{Collection of simple scripts (mostly dev-related)}
   s.email = %q{arvitallian@gmail.com}
-  s.executables = ["gitcp", "jew", "mybones", "rabbit"]
+  s.executables = ["citi", "dummy", "gitcp", "jew", "mybones", "rabbit", "recode.rb"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -24,15 +24,20 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/citi",
+     "bin/dummy",
      "bin/gitcp",
      "bin/jew",
      "bin/mybones",
      "bin/rabbit",
+     "bin/recode.rb",
      "features/my_scripts.feature",
      "features/step_definitions/my_scripts_steps.rb",
      "features/support/env.rb",
      "lib/my_scripts.rb",
+     "lib/my_scripts/citi.rb",
      "lib/my_scripts/cli.rb",
+     "lib/my_scripts/dummy.rb",
      "lib/my_scripts/extensions.rb",
      "lib/my_scripts/gitcp.rb",
      "lib/my_scripts/jew.rb",
@@ -51,6 +56,7 @@ Gem::Specification.new do |s|
   s.summary = %q{A collection of ascripts}
   s.test_files = [
     "spec/my_scripts/extensions_spec.rb",
+     "spec/my_scripts_spec.rb",
      "spec/spec_helper.rb"
   ]
 

@@ -2,6 +2,11 @@ module MyScripts
   # This class encapsulates Command Line Interface for running scripts. It can be instantiated
   # with stubbed stdin and stdout if you want to run tests on your scripts
   class CLI
+    class ScriptNameError < NameError  # :nodoc:
+      def initialize(message=nil)
+        message ? super(message) : super
+      end
+    end
 
     attr_accessor :stdout, :stdin
 
@@ -19,12 +24,16 @@ module MyScripts
 
     # Runs a script with given name (token) and argv inside this CLI instance
     def run( script_name, argv )
-      script = "MyScripts::#{script_name.capitalize}".to_class
+      script = script_class_name(script_name).to_class
+      raise ScriptNameError.new("Script #{script_class_name(script_name)} not found") unless script
+      
       script.new(script_name, argv, self).run
-    rescue => e
-      @stdout.puts e.backtrace
-      @stdout.puts e.message
-      exit 1
+    end
+
+    private
+
+    def script_class_name(script_name)
+      "MyScripts::#{script_name.to_s.camel_case}"
     end
   end
 end

@@ -4,7 +4,7 @@ module MyScripts
   # You can immediately run your script anywhere using following command:
   #   $ dummy Whatever arguments your code expects and processes
   #
-  class MyShinyScript < Script
+  class Dummy < Script
     def run
       # here you do all actual work for your script
       # you have following instance vars at your disposal:
