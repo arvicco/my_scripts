@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
 class String
-  TRANSLIT_CYRILLIC = 'АБВГДЕЁЗИЙКЛМНОПРСТУФЪЫЬЭабвгдеёзийклмнопрстуфъыьэ'
-  TRANSLIT_LATIN = "ABVGDEEZIJKLMNOPRSTUF\"Y'Eabvgdeezijklmnoprstuf\"y'e"
+  TRANSLIT_CYRILLIC = %Q{АБВГДЕЁЗИЙКЛМНОПРСТУФЪЫЬЭабвгдеёзийклмнопрстуфъыьэ}
+  TRANSLIT_LATIN = %Q{ABVGDEEZIJKLMNOPRSTUF"Y'Eabvgdeezijklmnoprstuf"y'e}
   TRANSLIT_DOUBLES = {'Ж'=>'ZH', 'Х'=>'KH', 'Ц'=>'TS', 'Ч'=>'CH', 'Ш'=>'SH', 'Щ'=>'SHCH', 'Ю'=>'YU', 'Я'=>'YA',
                       'ж'=>'zh', 'х'=>'kh', 'ц'=>'ts', 'ч'=>'ch', 'ш'=>'sh', 'щ'=>'shch', 'ю'=>'yu', 'я'=>'ya'}
 

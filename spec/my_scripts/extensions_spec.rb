@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 module MyScriptsTest
@@ -45,5 +47,15 @@ module MyScriptsTest
         "::MyScriptsTest::A::B::C".to_class.should == MyScriptsTest::A::B::C
       end
     end
+
+    context '#translit!' do
+      it 'converts string from Cyrillic to Latin translit' do
+        "Широкая электрификация южных губерний даст мощный толчок подъёму сельского хозяйства".translit!.
+         should == "SHirokaya elektrifikatsiya yuzhnykh gubernij dast moshchnyj tolchok pod\"emu sel'skogo khozyajstva"
+        "ШИРОКАЯ ЭЛЕКТРИФИКАЦИЯ ЮЖНЫХ ГУБЕРНИЙ ДАСТ МОЩНЫЙ ТОЛЧОК ПОДЪЁМУ СЕЛЬСКОГО ХОЗЯЙСТВА".translit!.
+         should == "SHIROKAYA ELEKTRIFIKATSIYA YUZHNYKH GUBERNIJ DAST MOSHCHNYJ TOLCHOK POD\"EMU SEL'SKOGO KHOZYAJSTVA"
+      end
+    end
+
   end
 end

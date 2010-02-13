@@ -15,7 +15,7 @@ paths, environments and all such nonsense... It is also not OS-specific, so
 OK, I confess: I wanted to write scripts but had neither time nor desire to learn
 all the esoterics of bash, cmd/powershell and mac scripting. So, I set out to do
 all my scripting in Ruby. I also wanted my scripts to be easily testable, that's
-why I created a simple scripting framework instead of stuffing each script in a
+why I created a simple scripting framework instead of stuffing each script into a
 separate executable Ruby file as most people do.
 
 These scripts are very much targeted to my own specific needs, but if you find them
@@ -33,16 +33,20 @@ looks like too much pain. Ruby 1.9 is the way of the future, so let's move forwa
 == SYNOPSIS:
 === Creating your own scripts
 
-Put your source file inside lib/my_scripts. It will be auto-loaded. Use MyScripts
+First, you need to either fork my_scripts on github or clone it to your computer with:
+
+  $ git clone git://github.com/arvicco/my_scripts.git
+
+Now, put your Ruby file inside lib/my_scripts. It will be auto-loaded. Use MyScripts
 module as a top level namespace. Subclass Script and redefine run method to do all
 actual work:
 
-  #-------- lib/my_shiny_script.rb----------
+  #-------- lib/my_scripts/my_shiny_script.rb----------
   module MyScript
     class MyShinyScript < Script
       def run
-        # here you do all actual work for your script
-        # you have following instance vars at your disposal:
+        # Here you put all the actual code of your script.
+        # You have following instance vars at your disposal:
         # @name - your script name,
         # @argv - your ARGV Array of command line arguments,
         # @cli - CLI runner (holds references to stdin and stdout)
@@ -63,9 +67,11 @@ Put your executable into bin directory, with something like this:
 Run 'rake install' from project directory, and enjoy greatness of your new script!
 
 OK, so you're not advanced enough to follow even these simple instructions. No problemo.
-I have dummy script skeleton in lib/dummy.rb that is ready for your use. Just put your
-script code inside run method (if you use ARGV, change it to @argv). Done! You can immediately
-run your script anywhere in the system using the following command:
+I guess you still managed to install my_scripts gem if you are reading this, so just modify it.
+Locate my_scripts gem in gem directory (usually it's something like ../ruby/lib/ruby/gems/1.9.1/gems).
+I have dummy script skeleton in lib/my_scripts/dummy.rb that is ready for your use. Just put your
+script code inside run method (if you use ARGV, change it to @argv). Done! You can
+immediately run your script anywhere in the system using the following command:
 
   $ dummy Whatever arguments your code expects and processes
 
