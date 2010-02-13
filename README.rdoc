@@ -42,7 +42,7 @@ module as a top level namespace. Subclass Script and redefine run method to do a
 actual work:
 
   #-------- lib/my_scripts/my_shiny_script.rb----------
-  module MyScript
+  module MyScripts
     class MyShinyScript < Script
       def run
         # Here you put all the actual code of your script.
