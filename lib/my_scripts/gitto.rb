@@ -17,7 +17,6 @@ module MyScripts
 
       puts "Committing (versionup =#{bump}) with message: #{message}"
 
-      system %Q[git add --all]
       case bump
         when 1..9
           system %Q[rake version:bump:patch]
@@ -26,6 +25,7 @@ module MyScripts
         when 10..99
           system %Q[rake version:bump:major]
       end
+      system %Q[git add --all]
       system %Q[git commit -a -m "#{message}" --author arvicco]
       system %Q[git push]
     end
