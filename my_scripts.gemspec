@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{my_scripts}
-  s.version = "0.0.11"
+  s.version = "0.0.12"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
-  s.date = %q{2010-02-13}
+  s.date = %q{2010-02-15}
   s.description = %q{Simple framework for writing command-line scripts and collection of my own scripts (mostly dev-related)}
   s.email = %q{arvitallian@gmail.com}
   s.executables = ["citi", "dummy", "gitto", "jew", "mybones", "rabbit"]
