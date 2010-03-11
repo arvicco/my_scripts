@@ -5,6 +5,8 @@ module MyScripts
       case @argv.shift 
         when /start/
           system "%ERLANG_HOME%/lib/rabbitmq_server-1.7.0/sbin/rabbitmq-server.bat #{ARGV.join(' ')}"
+        when /stop/
+          system "%ERLANG_HOME%/lib/rabbitmq_server-1.7.0/sbin/rabbitmqctl.bat stop #{ARGV.join(' ')}"
         when /ctl/
           system "%ERLANG_HOME%/lib/rabbitmq_server-1.7.0/sbin/rabbitmqctl.bat #{ARGV.join(' ')}"
         else

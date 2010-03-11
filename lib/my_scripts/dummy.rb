@@ -9,7 +9,7 @@ module MyScripts
       # here you do all actual work for your script
       # you have following instance vars at your disposal:
       # @name - your script name,
-      # @argv - your ARGV,
+      # @argv - your ARGV (Array of argument Strings passed at command line),
       # @cli - CLI runner (holds references to stdin and stdout)
       #...
     end
