@@ -48,13 +48,13 @@ module MyScriptsTest
       it 'executes pre-defined script without args' do
         cli = create_cli
         stdout_should_receive('OK')
-        cli.run( :scriptest, [])
+        cli.run :scriptest, []
       end
 
       it 'executes pre-defined script with args' do
         cli = create_cli
         stdout_should_receive('OK')
-        cli.run( :scriptest, [1, 2, 3, :four, 'five'])
+        cli.run :scriptest, [1, 2, 3, :four, 'five']
       end
 
       it 'returns return value of Script#run() when running pre-defined script' do
@@ -75,7 +75,7 @@ module MyScriptsTest
       it 'executes scripts with snake_case name' do
         cli = create_cli
         stdout_should_receive('OK')
-        cli.run( :snake_script, [])
+        cli.run :snake_script, []
       end
     end
   end

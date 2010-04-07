@@ -31,7 +31,6 @@ module MyScripts
             /Vznos Nalichnykh(.+)/ => "Cash deposit\nM\\1\nL[Cash RUB]",
             /Kom Za Obsluzhivanie/ => "Citibank\nMService fee\nLFinance:Bank Charge",
             /Komissiya Za Snyatie Nalichnykh/ => "Citibank\nMCash withdrawal fee\nLFinance:Bank Charge"
-
     }
 
     def run
@@ -43,8 +42,8 @@ module MyScripts
       out_file = @argv[1] ? @argv[1] : in_file.sub(/\.qif|$/i, '_out.qif')
 
 #      $stdout.set_encoding(STDOUT_ENCODING, :undef=>:replace)
-      File.open(out_file, 'w:'+ (OUTFILE_ENCODING), :undef => :replace) do |outfile|
-        File.open(in_file, 'r:'+ (INFILE_ENCODING), :undef => :replace).each_line do |line|
+      File.open(out_file, 'w:'+ OUTFILE_ENCODING, :undef => :replace) do |outfile|
+        File.open(in_file, 'r:'+ INFILE_ENCODING, :undef => :replace).each_line do |line|
           type = line[0]
           text = line[1..-1]
           case type # Indicates type of field

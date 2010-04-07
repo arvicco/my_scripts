@@ -9,45 +9,13 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["arvicco"]
-  s.date = %q{2010-03-11}
+  s.date = %q{2010-04-07}
   s.description = %q{Simple framework for writing command-line scripts and collection of my own scripts (mostly dev-related)}
   s.email = %q{arvitallian@gmail.com}
-  s.executables = ["citi", "dummy", "gitto", "jew", "mybones", "rabbit"]
+  s.executables = ["citi", "dummy", "gitto", "jew", "mybones", "newscript", "rabbit", "wake"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
-  ]
-  s.files = [
-    ".document",
-     ".gitignore",
-     "LICENSE",
-     "README.rdoc",
-     "Rakefile",
-     "VERSION",
-     "bin/citi",
-     "bin/dummy",
-     "bin/gitto",
-     "bin/jew",
-     "bin/mybones",
-     "bin/rabbit",
-     "features/my_scripts.feature",
-     "features/step_definitions/my_scripts_steps.rb",
-     "features/support/env.rb",
-     "lib/my_scripts.rb",
-     "lib/my_scripts/citi.rb",
-     "lib/my_scripts/cli.rb",
-     "lib/my_scripts/dummy.rb",
-     "lib/my_scripts/extensions.rb",
-     "lib/my_scripts/gitto.rb",
-     "lib/my_scripts/jew.rb",
-     "lib/my_scripts/mybones.rb",
-     "lib/my_scripts/rabbit.rb",
-     "lib/my_scripts/script.rb",
-     "my_scripts.gemspec",
-     "spec/my_scripts/extensions_spec.rb",
-     "spec/my_scripts_spec.rb",
-     "spec/spec.opts",
-     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/arvicco/my_scripts}
   s.rdoc_options = ["--charset=UTF-8"]
