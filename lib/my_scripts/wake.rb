@@ -11,9 +11,9 @@ module MyScripts
 
       require 'win/gui/input'
 
-      define_method :move_mouse_randomly do
+      self.class.define_method :move_mouse_randomly do
         x, y = Win::Gui::Input::get_cursor_pos
-        x1, y1 = x+rand(3)-1, y+rand(3)-1
+        x1, y1 = x + rand(3) - 1, y + rand(3) - 1
         Win::Gui::Input::mouse_event(Win::Gui::Input::MOUSEEVENTF_ABSOLUTE, x1, y1, 0, 0)
         puts "Cursor positon set to #{x1}, #{y1}"
       end
