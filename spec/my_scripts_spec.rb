@@ -5,9 +5,13 @@ module MyScriptsTest
   # creates new CLI object with mock stdin and stdout,
   # stdin optionally preloaded with fake user input
   def create_cli( opts={} )
-    @stdout = options[:stdout] || mock('stdout').as_null_object
-    @stdin = options[:stdin] || mock('stdin')
-    @stdin.stub(:gets).and_return(*options[:input]) if options[:input]
+    @stdout = opts[:stdout] || mock('stdout').as_null_object
+    @stdin = opts[:stdin] || mock('stdin')
+    if opts[:input]
+      @stdin.stub(:gets).and_return(*opts[:input])
+    else
+      @stdin.stub(:gets).and_return('')
+    end
     @cli = MyScripts::CLI.new @stdin, @stdout
   end
 
@@ -35,42 +39,93 @@ module MyScriptsTest
       end
     end
 
-    context 'executing pre-defined scripts' do
-      MyScripts.module_eval "
-      # Stub script that just puts 'OK' to stdout
-      class Scriptest < Script
-        def run
-          puts 'OK'
-          1
+    context 'scripts without arguments' do
+      MyScripts.module_eval do
+        # Stub script that prompts to stdout and echoes/returns what it gets from stdin
+        class Scriptest < Script
+          def run
+            puts 'Say it:'
+            puts gotten = gets
+            gotten
+          end
         end
-      end"
+      end
 
-      it 'executes pre-defined script without args' do
+      it 'cli.run executes pre-defined script' do
         cli = create_cli
-        stdout_should_receive('OK')
+        expect{cli.run :scriptest, []}.to_not raise_error
+      end
+
+      it 'script outputs to given stdout' do
+        cli = create_cli
+        stdout_should_receive('Say it:')
         cli.run :scriptest, []
       end
 
-      it 'executes pre-defined script with args' do
-        cli = create_cli
-        stdout_should_receive('OK')
-        cli.run :scriptest, [1, 2, 3, :four, 'five']
+      it 'script gets value from given stdin' do
+        cli = create_cli :input => 'yes'
+        stdout_should_receive('yes')
+        cli.run( :scriptest, [])
       end
 
-      it 'returns return value of Script#run() when running pre-defined script' do
-        cli = create_cli
-        cli.run( :scriptest, []).should == 1
+      it 'script returns last value of run() method' do
+        cli = create_cli :input => 'yes'
+        cli.run( :scriptest, []).should == 'yes'
       end
     end
 
-    context 'executing scripts with snake_case names' do
-      MyScripts.module_eval "
-      # Stub script that just puts 'OK' to stdout
-      class SnakeScript < Script
-        def run
-          puts 'OK'
+    context 'scripts with arguments' do
+      before(:each) {@given_args = [1, 2, 3, :four, 'five']}
+      MyScripts.module_eval do
+        # Stub script that prompts to stdout and echoes/returns what it gets from stdin
+        class Scriptest < Script
+          def run
+            puts @argv
+            puts 'Say it:'
+            puts gotten = gets
+            gotten
+          end
         end
-      end"
+      end
+
+      it 'cli.run executes pre-defined script' do
+        cli = create_cli
+        expect{cli.run :scriptest, @given_args}.to_not raise_error
+      end
+
+      it 'script outputs to given stdout' do
+        cli = create_cli
+        stdout_should_receive('Say it:')
+        cli.run :scriptest, @given_args
+      end
+
+      it 'script receives given arguments in @argv' do
+        cli = create_cli
+        stdout_should_receive(@given_args)
+        cli.run :scriptest, @given_args
+      end
+
+      it 'script gets value from given stdin' do
+        cli = create_cli :input => 'yes'
+        stdout_should_receive('yes')
+        cli.run( :scriptest, @given_args)
+      end
+
+      it 'script returns last value of run() method' do
+        cli = create_cli :input => 'yes'
+        cli.run( :scriptest, @given_args).should == 'yes'
+      end
+    end
+
+    context 'scripts with snake_case names' do
+      MyScripts.module_eval do
+        # Stub script that just puts 'OK' to stdout
+        class SnakeScript < Script
+          def run
+            puts 'OK'
+          end
+        end
+      end
 
       it 'executes scripts with snake_case name' do
         cli = create_cli

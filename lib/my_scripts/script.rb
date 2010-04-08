@@ -13,6 +13,11 @@ module MyScripts
 
     def puts *args
       @cli.stdout.puts *args
+      nil
+    end
+
+    def gets
+      @cli.stdin.gets
     end
 
     def usage examples, explanation = nil
