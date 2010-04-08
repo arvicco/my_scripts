@@ -7,7 +7,7 @@ module MyScripts
   class Wake < Script
     SLEEP_TIME = 4 * 60 # seconds
 
-    def initialize
+    def initialize( name, argv, cli )
 
       require 'win/gui/input'
 
@@ -17,6 +17,8 @@ module MyScripts
         Win::Gui::Input::mouse_event(Win::Gui::Input::MOUSEEVENTF_ABSOLUTE, x1, y1, 0, 0)
         puts "Cursor positon set to #{x1}, #{y1}"
       end
+
+      super
     end
 
     def run
