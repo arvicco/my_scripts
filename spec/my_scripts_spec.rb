@@ -130,18 +130,19 @@ module MyScriptsTest
 
     context 'prints usage' do
       context 'unversioned script' do
-        it 'outputs script name and usage note to stdout, then exits' do
+        it 'outputs script name, GEM version and usage note to stdout, then exits' do
           cli = create_cli
-          stdout_should_receive(/Script usage_script  - Usage/)
+          usage_regexp = Regexp.new("Script usage_script #{MyScripts::VERSION} - Usage")
+          stdout_should_receive(usage_regexp)
           stdout_should_receive(/Blah/)
           expect{cli.run :usage_script, []}.to raise_error SystemExit
         end
       end
-      context 'unversioned script' do
-        it 'outputs script name and usage note to stdout, then exits' do
+      context 'versioned script' do
+        it 'outputs script name, SCRIPT version and usage note to stdout, then exits' do
           cli = create_cli
           stdout_should_receive(/Script versioned_usage_script 0.0.13 - Usage/)
-#          stdout_should_receive(/Blah/)
+          stdout_should_receive(/Blah/)
           expect{cli.run :versioned_usage_script, []}.to raise_error SystemExit
         end
       end

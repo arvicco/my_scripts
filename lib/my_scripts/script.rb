@@ -9,11 +9,10 @@ module MyScripts
     end
 
     def version
-      p self.class, self.class.constants
-      p self.class.const_defined? :VERSION
-      p VERSION
       if self.class.const_defined? :VERSION
-        self.class::VERSION
+        self.class::VERSION  # Script's own version
+      else
+        VERSION # Gem version
       end
     end
 
