@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: MyScripts::CLI</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/my_scripts/cli_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/my_scripts/cli.rb">lib/my_scripts/cli.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+			<div id="namespace-list-section" class="section">
+				<h3 class="section-header">Namespace</h3>
+				<ul class="link-list">
+					
+					<li><span class="type">CLASS</span> <a href="CLI/ScriptNameError.html">MyScripts::CLI::ScriptNameError</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000004">::new</a></li>
+					
+					<li><a href="#M000003">::run</a></li>
+					
+					<li><a href="#M000005">#run</a></li>
+					
+					<li><a href="#M000006">#script_class_name</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../History_txt.html">History.txt</a></li>
+				
+					<li class="file"><a href="../README_txt.html">README.txt</a></li>
+				
+					<li class="file"><a href="../version_txt.html">version.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../MyScripts.html">MyScripts</a></li>
+				
+					<li><a href="../MyScripts/CLI.html">MyScripts::CLI</a></li>
+				
+					<li><a href="../MyScripts/Citi.html">MyScripts::Citi</a></li>
+				
+					<li><a href="../MyScripts/Dummy.html">MyScripts::Dummy</a></li>
+				
+					<li><a href="../MyScripts/Gitto.html">MyScripts::Gitto</a></li>
+				
+					<li><a href="../MyScripts/Jew.html">MyScripts::Jew</a></li>
+				
+					<li><a href="../MyScripts/Mybones.html">MyScripts::Mybones</a></li>
+				
+					<li><a href="../MyScripts/Rabbit.html">MyScripts::Rabbit</a></li>
+				
+					<li><a href="../MyScripts/Script.html">MyScripts::Script</a></li>
+				
+					<li><a href="../MyScripts/Wake.html">MyScripts::Wake</a></li>
+				
+					<li><a href="../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">MyScripts::CLI</h1>
+
+		<div id="description">
+			<p>
+This class encapsulates Command Line Interface for running scripts. It can
+be instantiated with stubbed stdin and stdout if you want to run tests on
+your scripts
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="stdout-attribute-method" class="method-detail">
+				<a name="stdout"></a>
+				
+				<a name="stdout="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">stdout</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="stdin-attribute-method" class="method-detail">
+				<a name="stdin"></a>
+				
+				<a name="stdin="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">stdin</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000004"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">( stdin=$stdin, stdout=$stdout )</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates new command line interface
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/my_scripts/cli.rb, line 20</span>
+20:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">stdin</span>=<span class="ruby-identifier">$stdin</span>, <span class="ruby-identifier">stdout</span>=<span class="ruby-identifier">$stdout</span> )
+21:       <span class="ruby-ivar">@stdin</span> = <span class="ruby-identifier">stdin</span>
+22:       <span class="ruby-ivar">@stdout</span> = <span class="ruby-identifier">stdout</span>
+23:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="run-method" class="method-detail ">
+				<a name="M000003"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run</span><span
+						class="method-args">( script_name, argv )</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Instantiates new CLI(command line interface) and runs script with given
+name (token) and argv inside new <a href="CLI.html">CLI</a> instance
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="run-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/my_scripts/cli.rb, line 15</span>
+15:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span>( <span class="ruby-identifier">script_name</span>, <span class="ruby-identifier">argv</span> )
+16:       <span class="ruby-identifier">new</span>.<span class="ruby-identifier">run</span> <span class="ruby-identifier">script_name</span>, <span class="ruby-identifier">argv</span>
+17:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="run-method" class="method-detail ">
+				<a name="M000005"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run</span><span
+						class="method-args">( script_name, argv )</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Runs a script with given name (token) and argv inside this <a
+href="CLI.html">CLI</a> instance
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="run-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/my_scripts/cli.rb, line 26</span>
+26:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>( <span class="ruby-identifier">script_name</span>, <span class="ruby-identifier">argv</span> )
+27:       <span class="ruby-identifier">script</span> = <span class="ruby-identifier">script_class_name</span>(<span class="ruby-identifier">script_name</span>).<span class="ruby-identifier">to_class</span>
+28:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ScriptNameError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Script #{script_class_name(script_name)} not found&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">script</span>
+29:       
+30:       <span class="ruby-identifier">script</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">script_name</span>, <span class="ruby-identifier">argv</span>, <span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">run</span>
+31:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="script-class-name-method" class="method-detail ">
+				<a name="M000006"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">script_class_name</span><span
+						class="method-args">(script_name)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="script-class-name-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/my_scripts/cli.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">script_class_name</span>(<span class="ruby-identifier">script_name</span>)
+36:       <span class="ruby-node">&quot;MyScripts::#{script_name.to_s.camel_case}&quot;</span>
+37:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+my_scipts version 0.0.20
+    by arvicco
+    http://github.com/arvicco/my_scipts
+
+== DESCRIPTION
+
+A collection of simple scripts/commands used to save time and avoid memorizing/
+retyping chains of boilerplate console commands and their arguments. Packaged
+as a gem to make it easily available everywhere without the need to set up
+paths, environments and all such nonsense... It is also not OS-specific, so
+(in theory) scripts should work on Mac, *nix and Windows.
+
+== CHANGES
+
+* 1 major enhancement
+  * Birthday!
+

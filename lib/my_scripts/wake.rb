@@ -11,14 +11,15 @@ module MyScripts
 
       require 'win/gui/input'
 
-      self.class.define_method :move_mouse_randomly do
-        x, y = Win::Gui::Input::get_cursor_pos
-        x1, y1 = x + rand(3) - 1, y + rand(3) - 1
-        Win::Gui::Input::mouse_event(Win::Gui::Input::MOUSEEVENTF_ABSOLUTE, x1, y1, 0, 0)
-        puts "Cursor positon set to #{x1}, #{y1}"
-      end
-
+      self.class.send(:include, Win::Gui::Input)
       super
+    end
+
+    def move_mouse_randomly
+      x, y = get_cursor_pos
+      x1, y1 = x + rand(3) - 1, y + rand(3) - 1
+      mouse_event(MOUSEEVENTF_ABSOLUTE, x1, y1, 0, 0)
+      puts "Cursor positon set to #{x1}, #{y1}"
     end
 
     def run
@@ -26,7 +27,7 @@ module MyScripts
         when 0
           sleep_time = SLEEP_TIME
         when 1
-          sleep_time = @argv.first * 60
+          p sleep_time = @argv.first.to_f * 60
         else
           usage "[minutes] - prevents screen auto lock-up by moving mouse pointer every (4) [minutes]"
       end

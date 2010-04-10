@@ -8,6 +8,15 @@ module MyScripts
       @cli = cli
     end
 
+    def version
+      p self.class, self.class.constants
+      p self.class.const_defined? :VERSION
+      p VERSION
+      if self.class.const_defined? :VERSION
+        self.class::VERSION
+      end
+    end
+
     def run
     end
 
@@ -21,8 +30,8 @@ module MyScripts
     end
 
     def usage examples, explanation = nil
-      puts "Usage:"
-      puts (examples.respond_to?(:split) ? examples.split("\n") : examples).map {|line| "    #{@name} #{line}"}
+      puts "Script #{@name} #{version} - Usage:"
+      (examples.respond_to?(:split) ? examples.split("\n") : examples).map {|line| puts "    #{@name} #{line}"}
       puts explanation if explanation
       exit 1
     end
