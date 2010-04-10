@@ -21,8 +21,7 @@ module MyScripts
   # :file:: Libs are required relative to this file - defaults to __FILE__
   # :dir:: Required libs are located under this dir name - defaults to gem name
   #
-  def self.require_libs(libs, opts={})
-    p opts, VERSION
+  def self.require_libs( libs, opts={} )
     [libs].flatten.each {|lib| require_lib lib, opts }
   end
 
