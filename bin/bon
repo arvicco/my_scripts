@@ -2,4 +2,4 @@
 
 require File.dirname(__FILE__) + '/../lib/my_scripts'
 
-MyScripts::CLI.run :newscript, ARGV
+MyScripts::CLI.run :bon, ARGV

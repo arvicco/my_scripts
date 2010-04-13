@@ -5,29 +5,20 @@ module MyScripts
   #
   class Gitto < Script
     def run
-      usage "[bump: 1 - patch, 10 - minor, 100 - major] Commit message goes here" if @argv.empty?
+      usage "[0.1.2 - version, 100/10/1 - bump major/minor/patch, .patch - add patch] Commit message goes here" if @argv.empty?
 
-      # If first Arg is a number, it indicates version bump
-      bump = @argv[0].to_i > 0 ? @argv.shift.to_i : 0
+      # First Arg may indicate version command if it matches pattern
+      ver = @argv[0] =~ /^(\d+\.\d+\.\d+(?:\.(.*?))?|\.(.*?)|\d{1}0{0,2})$/ ? @argv[0].shift : nil
 
       # All the other args lumped into message, or default message
-      message = @argv.empty? ? 'Commit' : @argv.join(' ')
-      # Timestamp added to message
-      message += " #{Time.now.to_s[0..-6]}"
+      message = @argv.empty? ?  "Commit #{Time.now.to_s[0..-6]}" : @argv.join(' ')
 
-      puts "Committing (versionup =#{bump}) with message: #{message}"
+      puts "Committing #{ ver ? "(version = #{ver}) " : ""}with message: #{message}"
 
-      case bump
-        when 1..9
-          system %Q[rake version:bump:patch]
-        when 10..99
-          system %Q[rake version:bump:minor]
-        when 100
-          system %Q[rake version:bump:major]
-      end
-      system %Q[git add --all]
-      system %Q[git commit -a -m "#{message}" --author arvicco]
-      system %Q[git push]
+      system %Q{rake version[#{ver}]} if ver
+      system %Q{git add --all}
+      system %Q{git commit -a -m "#{message}" --author arvicco}
+      system %Q{git push}
     end
   end
 end

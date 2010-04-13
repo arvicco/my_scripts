@@ -8,9 +8,7 @@ module MyScripts
     SLEEP_TIME = 4 * 60 # seconds
 
     def initialize( name, argv, cli )
-
       require 'win/gui/input'
-
       self.class.send(:include, Win::Gui::Input)
       super
     end
@@ -27,7 +25,7 @@ module MyScripts
         when 0
           sleep_time = SLEEP_TIME
         when 1
-          p sleep_time = @argv.first.to_f * 60
+          sleep_time = @argv.first.to_f * 60
         else
           usage "[minutes] - prevents screen auto lock-up by moving mouse pointer every (4) [minutes]"
       end
