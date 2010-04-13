@@ -1,8 +1,8 @@
-= my_scripts
-    by: Arvicco
-    url: http://github.com/arvicco/my_scripts
+== my_scripts
+by: Arvicco
+url: http://github.com/arvicco/my_scripts
 
-== DESCRIPTION:
+=== DESCRIPTION:
 
 A collection of simple scripts/commands used to save time and avoid memorizing/
 retyping chains of boilerplate console commands and their arguments. Packaged
@@ -10,7 +10,7 @@ as a gem to make it easily available everywhere without the need to set up
 paths, environments and all such nonsense... It is also not OS-specific, so
 (in theory) scripts should work on Mac, *nix and Windows.
 
-== FEATURES/PROBLEMS:
+=== FEATURES:
 
 OK, I confess: I wanted to write scripts but had neither time nor desire to learn
 all the esoterics of bash, cmd/powershell and mac scripting. So, I set out to do
@@ -18,30 +18,44 @@ all my scripting in Ruby. I also wanted my scripts to be easily testable, that's
 why I created a simple scripting framework instead of stuffing each script into a
 separate executable Ruby file as most people do.
 
+Yes, I know about Rake tasks - however they are tied to specific directory and
+notoriously difficult to test/debug. I also learned about Thor, which may be a good
+fit for most things I need to do - but prefixing every command with 'thor' kinda
+puts me off. Besides, I wanted to have something dead simple and entirely under
+my control, rather than depending on 3rd party magic.
+
 These scripts are very much targeted to my own specific needs, but if you find them
 useful or need additional features, I'll be happy to generalize. You can also use this
 gem as a basis for writing your own simple scripts that are easy to test and maintain.
+
+My scripts do not have lots of moving parts:
+ * MyScripts::CLI provides context for running scripts (like telling them where stdin and stdout are)
+ * MyScripts::Script is a template class defining all the basic methods
+ * MyScripts::YourOwnScript is your script proper. Make it a subclass of MyScripts::Script and
+   define method 'run' - that's all there is to it
+ * Executable file in bin that calls MyScripts::CLI.run with arguments being your script name and ARGV
+
+=== PROBLEMS:
 
 Ah, yes - this gem will work only with Ruby 1.9 and later. I use advanced string encoding
 features in my scripts, so 1.8 is not an option for me, and providing backward compatibility
 looks like too much pain. Ruby 1.9 is the way of the future, so let's move forward!
 
-== INSTALL:
+=== INSTALL:
 
   $ sudo gem install my_scripts
 
-== SYNOPSIS:
-=== Creating your own scripts
+=== SYNOPSIS:
+==== Creating your own scripts
 
 First, you need to either fork my_scripts on github or clone it to your computer with:
 
   $ git clone git://github.com/arvicco/my_scripts.git
 
-Now, put your Ruby file inside lib/my_scripts. It will be auto-loaded. Use MyScripts
-module as a top level namespace. Subclass Script and redefine run method to do all
-actual work:
+Now, put your Ruby file inside lib/my_scripts/scripts. It will be auto-loaded. Use MyScripts
+module as a namespace, subclass Script and redefine run method to do all the actual work:
 
-  #-------- lib/my_scripts/my_shiny_script.rb----------
+  #-------- lib/my_scripts/scripts/my_shiny_script.rb----------
   module MyScripts
     class MyShinyScript < Script
       def run
@@ -64,35 +78,34 @@ Put your executable into bin directory, with something like this:
   MyScripts::CLI.run :my_shiny_script, ARGV
   #-------
 
-Run 'rake install' from project directory, and enjoy greatness of your new script!
-
-OK, so you're not advanced enough to follow even these simple instructions. No problemo.
-I guess you still managed to install my_scripts gem if you are reading this, so just modify it.
-Locate my_scripts gem in gem directory (usually it's something like ../ruby/lib/ruby/gems/1.9.1/gems).
-I have dummy script skeleton in lib/my_scripts/dummy.rb that is ready for your use. Just put your
-script code inside run method (if you use ARGV, change it to @argv). Done! You can
-immediately run your script anywhere in the system using the following command:
-
-  $ dummy Whatever arguments your code expects and processes
-
-=== Using existing scripts
+==== Using existing scripts
 
   $ jew project_name Summary or description goes here
 
 This script uses Jeweler to create new project skeleton, local git repo and
-initiate remote repo on github. No need to enclose your description in quotes.
+initiate remote repo on Github. No need to enclose your description in quotes.
 
-  $ gitto [BUMP] Commit message goes here
+  $ bon project_name Summary or description goes here
+
+This script uses Mr.Bones to create new project skeleton, local git repo and
+initiate remote repo on Github. No need to enclose your description in quotes.
+
+  $ gitto [VERSION] Commit message goes here
 
 Save the result of all your project-related work with one command. It adds all
 new files to git VCS, commits all changes with a timestamped message, opionally
-bumps up version and pushes to remote VCS repository(-ies). If first arg is a
-number, it is treated as bump directive: 1 - bump:patch, 10 - bump:minor,
-100 - bump:major. Otherwise all arguments are treated as part of commit message.
-Use inside project dir, preferably at top level.
+changes version and pushes to git remote(s).
+First arg is considered a version command if it is like this:
+1.2.3  - Explicit version set,
+1      - Version bump:patch,
+10     - Version bump:minor,
+100    - Version bump:major,
+.patch - Adding patch.
+Otherwise all arguments are treated as part of commit message. Use this command inside
+project directory, preferably at top level.
 
 ...
 
-== LICENSE:
+=== LICENSE:
 
 Copyright (c) 2009 Arvicco. See LICENSE for details.

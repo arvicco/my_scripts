@@ -16,10 +16,11 @@ module MyScripts
       end
     end
 
+    # This is where all action happens. Should be defined by all Script implementations
     def run
     end
 
-    def puts *args
+    def puts( *args )
       @cli.stdout.puts *args
       nil
     end
@@ -28,10 +29,17 @@ module MyScripts
       @cli.stdin.gets
     end
 
-    def usage examples, explanation = nil
+    # Outputs usage notes (and optional extended explanation), then exits with code 1
+    def usage( examples, explanation = nil )
       puts "Script #{@name} #{version} - Usage:"
       (examples.respond_to?(:split) ? examples.split("\n") : examples).map {|line| puts "    #{@name} #{line}"}
       puts explanation if explanation
+      exit 1
+    end
+
+    # Outputs error text, then exits with code 1
+    def error( text )
+      puts "Script #{@name} #{version} - Error: #{text}"
       exit 1
     end
 
