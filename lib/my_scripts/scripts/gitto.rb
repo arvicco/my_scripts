@@ -8,7 +8,7 @@ module MyScripts
       usage "[0.1.2 - version, 100/10/1 - bump major/minor/patch, .patch - add patch] Commit message goes here" if @argv.empty?
 
       # First Arg may indicate version command if it matches pattern
-      ver = @argv[0] =~ /^(\d+\.\d+\.\d+(?:\.(.*?))?|\.(.*?)|\d{1}0{0,2})$/ ? @argv[0].shift : nil
+      ver = @argv[0] =~ /^(\d+\.\d+\.\d+(?:\.(.*?))?|\.(.*?)|\d{1}0{0,2})$/ ? @argv.shift : nil
 
       # All the other args lumped into message, or default message
       message = @argv.empty? ?  "Commit #{Time.now.to_s[0..-6]}" : @argv.join(' ')
