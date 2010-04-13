@@ -1,19 +1,24 @@
+require 'pathname'
+NAME = 'my_scripts'
+BASE_DIR = Pathname.new(__FILE__).dirname
+LIB_DIR =  BASE_DIR + 'lib'
+PKG_DIR =  BASE_DIR + 'pkg'
+DOC_DIR =  BASE_DIR + 'rdoc'
+
+$LOAD_PATH.unshift LIB_DIR.to_s
+require NAME
+
+CLASS_NAME = MyScripts
+VERSION = CLASS_NAME::VERSION
 
 begin
-  require 'bones'
+  require 'rake'
 rescue LoadError
-  abort '### Please install the "bones" gem ###'
+  require 'rubygems'
+  gem 'rake', '~> 0.8.3.1'
+  require 'rake'
 end
 
-task :default => 'test:run'
-task 'gem:release' => 'test:run'
-
-Bones {
-  name 'my_scripts'
-  authors 'arvicco'
-  email 'arvitallian@gmail.com'
-  url 'http://github.com/arvicco/my_scipts'
-  ignore_file '.gitignore'
-  test_files [ "spec/**.rb" ]
-}
+# Load rakefile tasks
+Dir['tasks/*.rake'].sort.each { |file| load file }
 

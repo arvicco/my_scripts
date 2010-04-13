@@ -22,7 +22,7 @@ module MyScripts
           system %Q[rake version:bump:patch]
         when 10..99
           system %Q[rake version:bump:minor]
-        when 10..99
+        when 100
           system %Q[rake version:bump:major]
       end
       system %Q[git add --all]
