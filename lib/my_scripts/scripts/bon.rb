@@ -16,6 +16,7 @@ module MyScripts
       puts "Creating Bones project #{name} with summary: #{summary}"
 
       success = system %Q[bones create --github "#{summary}" -s #{DEFAULT_SKELETON} #{name}]
+
       if success
         system "cd #{name} && git grep FIXME"
       end
