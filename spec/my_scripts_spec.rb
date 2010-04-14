@@ -2,35 +2,7 @@ require 'spec_helper'
 
 module MyScriptsTest
 
-  # creates new CLI object with mock stdin and stdout,
-  # stdin optionally preloaded with fake user input
-  def create_cli( opts={} )
-    @stdout = opts[:stdout] || mock('stdout').as_null_object
-    @stdin = opts[:stdin] || mock('stdin')
-    if opts[:input]
-      @stdin.stub(:gets).and_return(*opts[:input])
-    else
-      @stdin.stub(:gets).and_return('')
-    end
-    @cli = MyScripts::CLI.new @stdin, @stdout
-  end
-
-  # sets expectation for stdout to receive strictly ordered sequence of exact messages
-  def stdout_should_receive(*messages)
-    messages.each do |message|
-      @stdout.should_receive(:puts).with(message).once.ordered
-    end
-  end
-
-  # sets expectation for stdout to receive message(s) containing all of the patterns (unordered)
-  def stdout_should_include(*patterns)
-    patterns.each do |pattern|
-      re = Regexp === pattern ? pattern : Regexp.new(Regexp.escape(pattern))
-      @stdout.should_receive(:puts).with(re).at_least(:once)
-    end
-  end
-
-  describe 'Script Execution' do
+  describe 'Script Execution (in general)' do
     MyScripts.module_eval do
       # Stub script that outputs @argv, prompts to stdout and echoes/returns what it gets from stdin
       class Scriptest < Script  #one word for script name
@@ -61,6 +33,13 @@ module MyScriptsTest
         VERSION = '0.0.13'
         def run
           usage 'Blah'
+        end
+      end
+
+      # Stub script that calls system
+      class SystemScript < Script
+        def run
+          system 'Blah'
         end
       end
     end
@@ -128,7 +107,7 @@ module MyScriptsTest
       end
     end
 
-    context 'prints usage' do
+    context 'printing usage' do
       context 'unversioned script' do
         it 'outputs script name, GEM version and usage note to stdout, then exits' do
           cli = create_cli
@@ -145,6 +124,14 @@ module MyScriptsTest
           stdout_should_receive(/Blah/)
           expect{cli.run :versioned_usage_script, []}.to raise_error SystemExit
         end
+      end
+    end
+
+    context 'scripts calling system' do
+      it 'calls system method on cli.kernel' do
+        cli = create_cli :system => 'OK'
+        system_should_receive('Blah')
+        cli.run(:system_script, []).should == 'OK'
       end
     end
 

@@ -7,14 +7,14 @@ module MyScripts
       usage "project_name Summary or description goes here" if @argv.empty?
 
       # First Arg should be project name
-      project = @argv.shift
+     name = @argv.shift
 
       # All the other args lumped into summary, or default summary
-      summary = @argv.empty? ? "New project #{project}" : @argv.join(' ')
+      summary = @argv.empty? ? "New project #{name}" : @argv.join(' ')
 
-      puts "Creating Jeweler project #{project} with summary/description: #{summary}"
+      puts "Creating Jeweler project #{name} with summary/description: #{summary}"
 
-      system %Q[jeweler --rspec --cucumber --create-repo --summary "#{summary}" --description "#{summary}" #{project}]
+      system %Q[jeweler --rspec --cucumber --create-repo --summary "#{summary}" --description "#{summary}" #{name}]
     end
   end
 end

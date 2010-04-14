@@ -20,6 +20,10 @@ module MyScripts
     def run
     end
 
+    def system( *args)
+      @cli.kernel.system *args
+    end
+
     def puts( *args )
       @cli.stdout.puts *args
       nil

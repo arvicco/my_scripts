@@ -11,7 +11,7 @@ module MyScripts
       name = @argv.shift
 
       # All the other args lumped into summary, or default summary
-      summary = @argv.empty? ? "New project #{project}" : @argv.join(' ')
+      summary = @argv.empty? ? "New project #{name}" : @argv.join(' ')
 
       puts "Creating Bones project #{name} with summary: #{summary}"
 

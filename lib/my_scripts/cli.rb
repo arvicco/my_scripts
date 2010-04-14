@@ -8,7 +8,7 @@ module MyScripts
       end
     end
 
-    attr_accessor :stdout, :stdin
+    attr_accessor :stdout, :stdin, :kernel
 
     # Instantiates new CLI(command line interface) and runs script with given name (token)
     # and argv inside new CLI instance
@@ -17,9 +17,10 @@ module MyScripts
     end
 
     # Creates new command line interface
-    def initialize( stdin=$stdin, stdout=$stdout )
+    def initialize( stdin=$stdin, stdout=$stdout, kernel = Kernel )
       @stdin = stdin
       @stdout = stdout
+      @kernel = kernel
     end
 
     # Runs a script with given name (token) and argv inside this CLI instance

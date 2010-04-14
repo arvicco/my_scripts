@@ -1,6 +1,9 @@
 desc "Alias to gem:release"
 task :release => 'gem:release'
 
+desc "Alias to gem:install"
+task :install => 'gem:install'
+
 desc "Alias to gem:build"
 task :gem => 'gem:build'
 
