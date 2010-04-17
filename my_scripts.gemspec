@@ -7,8 +7,9 @@ $:.unshift lib unless $:.include?(lib)
 require 'my_scripts'
 
 Gem::Specification.new do |gem|
+
   gem.name        = "my_scripts"
-  gem.version     = MyScripts::VERSION
+  gem.version     = ::MyScripts::VERSION
   gem.summary     = %q{Describe package my_scripts}
   gem.description = %q{Describe package my_scripts}
   gem.authors     = ["arvicco"]
@@ -27,7 +28,7 @@ Gem::Specification.new do |gem|
 
   # RDoc setup
   gem.has_rdoc = true
-  gem.rdoc_options.concat %W{--charset=UTF-8 --main README.rdoc -S -N --title Example}
+  gem.rdoc_options.concat %W{--charset UTF-8 --main README.rdoc --title my_scripts}
   gem.extra_rdoc_files = ["LICENSE", "HISTORY", "README.rdoc"]
     
   # Dependencies

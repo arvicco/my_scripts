@@ -36,7 +36,7 @@ class Version
 
   def write(description = nil)
     CLASS_NAME::VERSION_FILE.open('w') {|file| file.puts to_s }
-    (BASE_DIR + 'HISTORY').open('a') do |file|
+    (BASE_PATH + 'HISTORY').open('a') do |file|
       file.puts "\n== #{to_s} / #{Time.now.strftime '%Y-%m-%d'}\n"
       file.puts "\n* #{description}\n" if description 
     end
