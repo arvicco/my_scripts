@@ -1,0 +1,41 @@
+    The MONCONVSTRUCT structure contains information about a Dynamic Data Exchange (DDE) conversation. A DDE monitoring application can use this structure to obtain information about a conversation that has been established or has terminated.
+
+    Syntax
+
+    typedef struct tagMONCONVSTRUCT {
+        UINT cb;
+        BOOL fConnect;
+        DWORD dwTime;
+        HANDLE hTask;
+        HSZ hszSvc;
+        HSZ hszTopic;
+        HCONV hConvClient;
+        HCONV hConvServer;
+    } MONCONVSTRUCT, *PMONCONVSTRUCT;
+    Members
+
+    cb
+    Specifies the structure's size, in bytes.
+    fConnect
+    Indicates whether the conversation is currently established. A value of TRUE indicates the conversation is established; FALSE indicates it is not.
+    dwTime
+    Specifies the Windows time at which the conversation was established or terminated. Windows time is the number of milliseconds that have elapsed since the system was booted.
+    hTask
+    Handle to a task (application instance) that is a partner in the conversation.
+    hszSvc
+    Handle to the service name on which the conversation is established.
+    hszTopic
+    Handle to the topic name on which the conversation is established.
+    hConvClient
+    Handle to the client conversation.
+    hConvServer
+    Handle to the server conversation.
+    Remarks
+
+    Because string handles are local to the process, the hszSvc and hszTopic members are global atoms. Similarly, conversation handles are local to the instance; therefore, the hConvClient and hConvServer members are window handles.
+
+    The hConvClient and hConvServer members of the MONCONVSTRUCT structure do not hold the same value as would be seen by the applications engaged in the conversation. Instead, they hold a globally unique pair of values that identify the conversation.
+
+    Structure Information
+
+    Header Declared in Ddeml.h, include Windows.h

@@ -2,10 +2,11 @@ module MyScripts
   # Base class for all scripts. Subclass it and override run method with actual
   # work your script will be doing
   class Script
-    def initialize( name, argv, cli )
+    def initialize( name, cli, argv, argf )
       @name = name
-      @argv = argv
       @cli = cli
+      @argv = argv
+      @argf = argf
     end
 
     def version

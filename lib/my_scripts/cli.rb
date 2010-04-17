@@ -12,8 +12,8 @@ module MyScripts
 
     # Instantiates new CLI(command line interface) and runs script with given name (token)
     # and argv inside new CLI instance
-    def self.run( script_name, argv )
-      new.run script_name, argv
+    def self.run( script_name, argv, argf=ARGF )
+      new.run script_name, argv, argf
     end
 
     # Creates new command line interface
@@ -24,11 +24,11 @@ module MyScripts
     end
 
     # Runs a script with given name (token) and argv inside this CLI instance
-    def run( script_name, argv )
+    def run( script_name, argv, argf=ARGF )
       script = script_class_name(script_name).to_class
       raise ScriptNameError.new("Script #{script_class_name(script_name)} not found") unless script
       
-      script.new(script_name, argv, self).run
+      script.new(script_name, self, argv, argf).run
     end
 
     private
