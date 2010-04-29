@@ -35,3 +35,7 @@
 == 0.1.6 / 2010-04-17
 
 * Msdn added
+
+== 0.1.7 / 2010-04-29
+
+* Msdn helper extracted - for RubyMine script

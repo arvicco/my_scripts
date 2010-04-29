@@ -1,0 +1,47 @@
+      # MONCBSTRUCT Structure
+      # --------------------------------------------------------------------------------
+      # The MONCBSTRUCT structure contains information about the current Dynamic Data Exchange (DDE) 
+      # transaction. A DDE debugging application can use this structure when monitoring transactions that the 
+      # system passes to the DDE callback functions of other applications.
+      # 
+      # [*Typedef*] struct { UINT cb; DWORD dwTime; HANDLE hTask; DWORD dwRet; UINT wType; UINT wFmt; HCONV 
+      #             hConv; HSZ hsz1; HSZ hsz2; HDDEDATA hData; ULONG_PTR dwData1; ULONG_PTR dwData2; 
+      #             CONVCONTEXT cc; DWORD cbData; DWORD Data[8] } MONCBSTRUCT;
+      # 
+      # cb:: Specifies the structure's size, in bytes.
+      # dwTime:: Specifies the Windows time at which the transaction occurred. Windows time is the number of 
+      #          milliseconds that have elapsed since the system was booted.
+      # hTask:: Handle to the task (application instance) containing the DDE callback function that received 
+      #         the transaction.
+      # dwRet:: Specifies the value returned by the DDE callback function that processed the transaction.
+      # wType:: Specifies the transaction type.
+      # wFmt:: Specifies the format of the data exchanged (if any) during the transaction.
+      # hConv:: Handle to the conversation in which the transaction took place.
+      # hsz1:: Handle to a string.
+      # hsz2:: Handle to a string.
+      # hData:: Handle to the data exchanged (if any) during the transaction.
+      # dwData1:: Specifies additional data.
+      # dwData2:: Specifies additional data.
+      # cc:: Specifies a CONVCONTEXT structure containing language information used to share data in different 
+      #      languages.
+      # cbData:: Specifies the amount, in bytes, of data being passed with the transaction. This value can be 
+      #          more than 32 bytes.
+      # Data:: Contains the first 32 bytes of data being passed with the transaction (8 * sizeof(DWORD)).
+      
+class MONCBSTRUCT < FFI::Struct
+  layout :cb, :UINT,
+         :dw_time, :DWORD,
+         :h_task, :HANDLE,
+         :dw_ret, :DWORD,
+         :w_type, :UINT,
+         :w_fmt, :UINT,
+         :h_conv, :HCONV,
+         :hsz_1, :HSZ,
+         :hsz_2, :HSZ,
+         :h_data, :HDDEDATA,
+         :dw_data_1, :ULONG_PTR,
+         :dw_data_2, :ULONG_PTR,
+         :cc, :CONVCONTEXT,
+         :cb_data, :DWORD,
+         :data, [:DWORD, 8]
+end
