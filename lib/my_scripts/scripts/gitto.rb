@@ -4,11 +4,16 @@ module MyScripts
   # optionally bumps project version and pushes changes to remote repo
   #
   class Gitto < Script
+    VERSION_PATTERN = /^(\d+\.\d+\.\d+    # either explicit version (1.2.3)
+                        (?:\.(.*?))?      # possibly followed by .build
+                        |\.(.*?)          # or, just .build
+                        |\d{1}0{0,2})$/x  # or, one digit followed by 0-2 zeroes (100/10/1 - bump major/minor/patch)
+
     def run
-      usage "[0.1.2 - version, 100/10/1 - bump major/minor/patch, .patch - add patch] Commit message goes here" if @argv.empty?
+      usage "[0.1.2 - version, 100/10/1 - bump major/minor/patch, .build - add build] Commit message goes here" if @argv.empty?
 
       # First Arg may indicate version command if it matches pattern
-      version_command = @argv[0] =~ /^(\d+\.\d+\.\d+(?:\.(.*?))?|\.(.*?)|\d{1}0{0,2})$/ ? @argv.shift : nil
+      version_command = @argv[0] =~ VERSION_PATTERN ? @argv.shift : nil
 
       # All the other args lumped into message, or default message
       if @argv.empty?
@@ -28,7 +33,7 @@ module MyScripts
         end
       end
 
-      puts "Committing with message: #{commit_message}"
+      puts "Committing everything with message: #{commit_message}"
       system %Q{git add --all}
       system %Q{git commit -a -m "#{commit_message}" --author arvicco}
 
