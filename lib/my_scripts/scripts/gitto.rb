@@ -23,7 +23,7 @@ module MyScripts
         commit_message = history_message = @argv.join(' ')
       end
 
-      # Updating version if version command set
+      # Updating version only if version command set
       if version_command
         puts "Updating version with #{version_command}"
         if history_message
@@ -33,11 +33,15 @@ module MyScripts
         end
       end
 
-      puts "Committing everything with message: #{commit_message}"
+
+      puts "Adding all the changes"
       system %Q{git add --all}
+
+      puts "Committing everything with message: #{commit_message}"
       system %Q{git commit -a -m "#{commit_message}" --author arvicco}
 
-      puts "Pushing to remote(s)"
+      current_branch = `git branch`.strip
+      puts "Pushing to (default) remote for branch: #{current_branch}"
       system %Q{git push}
     end
   end

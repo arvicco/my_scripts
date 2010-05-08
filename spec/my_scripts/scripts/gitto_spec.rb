@@ -15,8 +15,9 @@ module MyScriptsTest
     context 'No version command' do
       it 'Commits with message, pushes to remote' do
         message = 'This is bomb!'
-        stdout_should_receive "Committing everything with message: #{message}",
-                              "Pushing to remote(s)"
+        stdout_should_receive "Adding all the changes",
+                              "Committing everything with message: #{message}",
+                              "Pushing to (default) remote for branch: * master"
         system_should_receive "git add --all",
                               %Q{git commit -a -m "#{message}" --author arvicco},
                               "git push"
@@ -28,8 +29,9 @@ module MyScriptsTest
           VERSION_COMMANDS.each do |command|
             message = 'This is bomb!'
 
-            stdout_should_receive "Committing everything with message: #{message}",
-                                  "Pushing to remote(s)"
+            stdout_should_receive "Adding all the changes",
+                                  "Committing everything with message: #{message}",
+                                  "Pushing to (default) remote for branch: * master"
             system_should_receive %Q{rake "version[#{command},#{message}]"},
                                   "git add --all",
                                   %Q{git commit -a -m "#{message}" --author arvicco},
@@ -40,8 +42,9 @@ module MyScriptsTest
 
         it 'Commits and pushes with default timestamped message if no message' do
           VERSION_COMMANDS.each do |command|
-            stdout_should_receive "Committing everything with message: Commit #{Time.now.to_s[0..-6]}",
-                                  "Pushing to remote(s)"
+            stdout_should_receive "Adding all the changes",
+                                  "Committing everything with message: Commit #{Time.now.to_s[0..-6]}",
+                                  "Pushing to (default) remote for branch: * master"
             system_should_receive "rake version[#{command}]",
                                   "git add --all",
                                   %Q{git commit -a -m "Commit #{Time.now.to_s[0..-6]}" --author arvicco},
