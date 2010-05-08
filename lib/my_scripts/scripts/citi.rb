@@ -4,6 +4,8 @@ module MyScripts
   # import into Quicken
   #
   class Citi < Script
+    VERSION = '0.1.0'
+
     INFILE_ENCODING = 'CP1251:UTF-8'  # Encoding pair of input file ('File external:Ruby internal')
     OUTFILE_ENCODING = 'CP1252:UTF-8' # Encoding pair of output file ('File external:Ruby internal')
 #    STDOUT_ENCODING = 'CP866:UTF-8'   # Encoding pair of stdout ('Stdout external:Ruby internal')

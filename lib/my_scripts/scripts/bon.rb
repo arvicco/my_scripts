@@ -3,7 +3,9 @@ module MyScripts
   # initiate remote repo on github
   #
   class Bon < Script
+    VERSION = '0.1.0'
     DEFAULT_SKELETON = 'basic'
+
     def run
       usage "name Summary or description goes here" if @argv.empty?
 

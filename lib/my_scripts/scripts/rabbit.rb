@@ -1,6 +1,8 @@
 module MyScripts
   # Starts and controls rabbitmq server
   class Rabbit < Script
+    VERSION = '0.1.0'
+
     def run
       error 'ERLANG_HOME not set' unless ENV['ERLANG_HOME']
       rabbit_hole = ENV['ERLANG_HOME'] + '/lib/rabbitmq_server-1.7.0/sbin'

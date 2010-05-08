@@ -5,6 +5,8 @@ module MyScripts
   # forced screen saver after 5 minutes of inactivity you'd feel the pain...
   #
   class Wake < Script
+    VERSION = '0.1.0'
+
     SLEEP_TIME = 4 * 60 # seconds
 
     def initialize( name, argv, cli )

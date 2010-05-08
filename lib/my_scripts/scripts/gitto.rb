@@ -4,7 +4,9 @@ module MyScripts
   # optionally bumps project version and pushes changes to remote repo
   #
   class Gitto < Script
-    VERSION_PATTERN = /^(\d+\.\d+\.\d+    # either explicit version (1.2.3)
+    VERSION = '0.1.0'
+
+    COMMAND_PATTERN = /^(\d+\.\d+\.\d+    # either explicit version (1.2.3)
                         (?:\.(.*?))?      # possibly followed by .build
                         |\.(.*?)          # or, just .build
                         |\d{1}0{0,2})$/x  # or, one digit followed by 0-2 zeroes (100/10/1 - bump major/minor/patch)
@@ -13,7 +15,7 @@ module MyScripts
       usage "[0.1.2 - version, 100/10/1 - bump major/minor/patch, .build - add build] Commit message goes here" if @argv.empty?
 
       # First Arg may indicate version command if it matches pattern
-      version_command = @argv[0] =~ VERSION_PATTERN ? @argv.shift : nil
+      version_command = @argv[0] =~ COMMAND_PATTERN ? @argv.shift : nil
 
       # All the other args lumped into message, or default message
       if @argv.empty?
@@ -32,7 +34,6 @@ module MyScripts
           system %Q{rake version[#{version_command}]}
         end
       end
-
 
       puts "Adding all the changes"
       system %Q{git add --all}

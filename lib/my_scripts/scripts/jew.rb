@@ -3,6 +3,8 @@ module MyScripts
   # initiate remote repo on github
   #
   class Jew < Script
+    VERSION = '0.1.0'
+
     def run
       usage "project_name Summary or description goes here" if @argv.empty?
 
