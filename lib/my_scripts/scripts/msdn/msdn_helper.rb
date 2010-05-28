@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby #
+
+
 # Make sure Strings respond to snake_case (even if this helper is called out of containing lib context)
 # This is needed when this file is required by RubyMine script "msdn_converter.rb"
 unless "".respond_to? :snake_case
@@ -75,6 +78,7 @@ module MyScripts
               /^Members\s*/m => "\n",
               /^Return Value\n\s*/m => "\n*Returns*:: ",
               /^Remarks\s*/m => "---\n*Remarks*:\n",
+              /\[(in|out|in,.?out)\]/ => '<\1>',
               }
       replace.each {|from, to| text.gsub!( from, to)}
 

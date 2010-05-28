@@ -10,8 +10,8 @@ Gem::Specification.new do |gem|
 
   gem.name        = "my_scripts"
   gem.version     = ::MyScripts::VERSION
-  gem.summary     = %q{Describe package my_scripts}
-  gem.description = %q{Describe package my_scripts}
+  gem.summary     = %q{Simple scripting framework}
+  gem.description = %q{Simple scripting framework}
   gem.authors     = ["arvicco"]
   gem.email       = "arvitallian@gmail.com"
   gem.homepage    = %q{http://github.com/arvicco/my_scripts}
