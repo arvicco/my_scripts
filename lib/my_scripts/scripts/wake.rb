@@ -9,7 +9,7 @@ module MyScripts
 
     SLEEP_TIME = 4 * 60 # seconds
 
-    def initialize( name, argv, cli )
+    def initialize( name, cli, argv, argf )
       require 'win/gui/input'
       require 'win/error'
       self.class.send(:include, Win::Gui::Input)

@@ -47,3 +47,7 @@
 == 0.1.9 / 2010-05-28
 
 * MSDN: [in] to <in> convertation added
+
+== 0.1.10 / 2010-05-31
+
+* Bug in wake fixed
