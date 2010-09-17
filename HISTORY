@@ -51,3 +51,7 @@
 == 0.1.10 / 2010-05-31
 
 * Bug in wake fixed
+
+== 0.1.11 / 2010-09-17
+
+* Rabbit now runs on OSX
