@@ -1,7 +1,11 @@
 module MyScripts
   # Starts and controls rabbitmq server
   class Rabbit < Script
-    VERSION = '0.1.0'
+    VERSION = '0.1.1'
+    USAGE = ["start [args] - starts rabbitmq node",
+             "stop [args] - stops running rabbitmq node",
+             "reset - resets rabbit hard, killing all data",
+             "ctl [args] - controls rabbitmq node"]
 
     def run
       if RUBY_PLATFORM =~ /windows|mingw32/
@@ -12,12 +16,13 @@ module MyScripts
           when /start/
             system "#{rabbit_hole}/rabbitmq-server.bat #{@argv.join(' ')}"
           when /stop/
-            system "#{rabbit_hole}/rabbitmqctl.bat stop #{@argv.join(' ')}"
+            system "#{rabbit_hole}/rabbitmqctl.bat stop_app"
+            system "#{rabbit_hole}/rabbitmqctl.bat force_reset"
+            system "#{rabbit_hole}/rabbitmqctl.bat start_app"
           when /ctl/
             system "#{rabbit_hole}/rabbitmqctl.bat #{@argv.join(' ')}"
           else
-            usage ["start [args] - starts rabbitmq node", "stop [args] - stops running rabbitmq node",
-                                                            "ctl [args] - controls rabbitmq node"]
+            usage USAGE
         end
       else
 
@@ -27,11 +32,14 @@ module MyScripts
             system "sudo #{rabbit_hole}/rabbitmq-server #{@argv.join(' ')}"
           when /stop/
             system "sudo #{rabbit_hole}/rabbitmqctl stop #{@argv.join(' ')}"
+          when /reset/
+            system "sudo #{rabbit_hole}/rabbitmqctl stop_app"
+            system "sudo #{rabbit_hole}/rabbitmqctl force_reset"
+            system "sudo #{rabbit_hole}/rabbitmqctl start_app"
           when /ctl/
             system "sudo #{rabbit_hole}/rabbitmqctl #{@argv.join(' ')}"
           else
-            usage ["start [args] - starts rabbitmq node", "stop [args] - stops running rabbitmq node",
-                                                            "ctl [args] - controls rabbitmq node"]
+            usage USAGE
         end
       end
     end
