@@ -15,11 +15,12 @@ module MyScripts
     end
 
     def run
-      Signal.trap('INT') do
-        @io.puts "ANSI Got Interrupt"
-        @io.flush
-        exit
-      end
+      Signal.trap('INT', nil)
+#      ) do
+#        @io.puts "ANSI Got Interrupt"
+#        @io.flush
+#        exit
+#      end
 
       until @cli.stdin.eof? do
         line = @cli.stdin.gets
