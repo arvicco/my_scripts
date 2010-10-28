@@ -15,12 +15,7 @@ module MyScripts
     end
 
     def run
-      Signal.trap('INT', nil)
-#      ) do
-#        @io.puts "ANSI Got Interrupt"
-#        @io.flush
-#        exit
-#      end
+      Signal.trap('INT', nil)  # Ignores Interrupt (Ctrl-C) - it is used by autotest
 
       until @cli.stdin.eof? do
         line = @cli.stdin.gets
