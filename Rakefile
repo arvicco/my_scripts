@@ -11,13 +11,8 @@ require NAME
 CLASS_NAME = MyScripts
 VERSION = CLASS_NAME::VERSION
 
-begin
-  require 'rake'
-rescue LoadError
-  require 'rubygems'
-  gem 'rake', '~> 0.8.3.1'
-  require 'rake'
-end
+gem 'rake', '~> 0.8.7'
+require 'rake'
 
 # Load rakefile tasks
 Dir['tasks/*.rake'].sort.each { |file| load file }

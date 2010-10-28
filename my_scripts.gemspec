@@ -4,19 +4,17 @@
 lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
-require 'my_scripts'
-
 Gem::Specification.new do |gem|
 
   gem.name        = "my_scripts"
-  gem.version     = ::MyScripts::VERSION
+  gem.version     = File.open('VERSION').read.strip #::AMQP::Spec::VERSION conflicts with Bundler
   gem.summary     = %q{Simple scripting framework}
   gem.description = %q{Simple scripting framework}
   gem.authors     = ["arvicco"]
   gem.email       = "arvitallian@gmail.com"
   gem.homepage    = %q{http://github.com/arvicco/my_scripts}
   gem.platform    = Gem::Platform::RUBY
-  gem.date        = Date.today.to_s
+  gem.date        = Time.now.strftime "%Y-%m-%d"
 
   # Files setup
   versioned         = `git ls-files -z`.split("\0")
@@ -34,10 +32,10 @@ Gem::Specification.new do |gem|
   # Dependencies
   gem.add_development_dependency(%q{rspec}, [">= 1.2.9"])
   gem.add_development_dependency(%q{cucumber}, [">= 0"])
-  #gem.add_dependency(%q{other}, [">= 1.2.9"])
+  gem.add_dependency(%q{bundler}, [">= 1.2.9"])
 
-  gem.rubyforge_project = ""
-  gem.rubygems_version  = `gem -v`
-  #gem.required_rubygems_version = ">= 1.3.6"
+  #  gem.rubyforge_project = ""
+  #  gem.rubygems_version  = `gem -v`
+  #  gem.required_rubygems_version = ">= 1.3.6"
 end
 
