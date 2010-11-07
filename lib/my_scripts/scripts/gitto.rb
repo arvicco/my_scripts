@@ -36,14 +36,14 @@ module MyScripts
       end
 
       puts "Adding all the changes"
-      system %Q{git add --all}
+      system "git add --all"
 
       puts "Committing everything with message: #{commit_message}"
-      system %Q{git commit -a -m "#{commit_message}" --author arvicco}
+      system %Q[git commit -a -m "#{commit_message}" --author arvicco]
 
       current_branch = `git branch`.strip
       puts "Pushing to (default) remote for branch: #{current_branch}"
-      system %Q{git push}
+      system "git push"
     end
   end
 end

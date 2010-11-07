@@ -32,7 +32,7 @@ Gem::Specification.new do |gem|
   # Dependencies
   gem.add_development_dependency(%q{rspec}, [">= 1.2.9"])
   gem.add_development_dependency(%q{cucumber}, [">= 0"])
-  gem.add_dependency(%q{bundler}, [">= 1.2.9"])
+  gem.add_dependency(%q{bundler}, [">= 1.0.0"])
 
   #  gem.rubyforge_project = ""
   #  gem.rubygems_version  = `gem -v`
